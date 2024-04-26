@@ -31,15 +31,18 @@ const requestListener = async (req,res)=>{
         'Content-Type': 'application/json'
     }
 
+    // 取得所有貼文
     if(req.url=="/posts" && req.method=="GET"){
-        const posts = await Post.find().limit(10);
+        const posts = await Post.find();
         res.writeHead(200,headers);
         res.write(JSON.stringify({
             "status":"success",
             posts
         }))
         res.end() 
-    }else if(req.url=="/posts" && req.method=="POST"){
+    }
+    // 新增一則貼文
+    else if(req.url=="/posts" && req.method=="POST"){
         req.on('end',async()=>{
             try{
                 const data = JSON.parse(body);
@@ -76,7 +79,58 @@ const requestListener = async (req,res)=>{
             }
         }
         )
-    }else if(req.url=="/posts" && req.method=="DELETE"){
+    }
+    // 更新一則貼文
+    else if(req.url.startsWith("/posts/") && req.method=="PATCH"){
+        // 取得貼文的 ID
+        const id = req.url.split("/").pop();
+        // 解析請求主體資料
+        req.on('end',async()=>{
+            try{
+                const data = JSON.parse(body);
+                // 找到該 ID 的貼文並更新
+                const updatedPost = await Post.findByIdAndUpdate(id, data, { new: true });
+                res.writeHead(200,headers);
+                res.write(JSON.stringify(
+                    {
+                        "status":"success",
+                        "message":"貼文已成功更新",
+                        post: updatedPost
+                    }
+                ))
+                res.end();
+            }catch(error){
+                res.writeHead(400,headers);
+                res.write(JSON.stringify(
+                    {
+                        "status":"false",
+                        "message":"欄位沒有正確，或沒有此 ID",
+                        "error":error
+                    }
+                ))
+                console.log(error);
+                res.end();
+            }
+        })
+    }
+    // 刪除一則貼文
+    else if(req.url.startsWith("/posts/") && req.method=="DELETE"){
+        // 取得貼文的 ID
+        const id = req.url.split("/")[2];
+        // 刪除該 ID 的貼文
+        const deletedPost = await Post.findByIdAndDelete(id);
+        res.writeHead(200,headers);
+        res.write(JSON.stringify(
+            {
+                "status":"success",
+                "message":"貼文已成功刪除",
+                post: deletedPost
+            }
+        ))
+        res.end();
+    }
+    // 刪除全部貼文
+    else if(req.url=="/posts" && req.method=="DELETE"){
         const posts = await Post.deleteMany({});
         res.writeHead(200,headers);
         res.write(JSON.stringify({
