@@ -3,25 +3,25 @@ const Post = require("./models/post");
 const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 
-dotenv.config({path:"./config.env"})
+dotenv.config({ path: "./config.env" })
 //console.log(process.env.PORT)
 const DB = process.env.DATABASE.replace(
-    '<password>',process.env.DATABASE_PASSWORD
-) 
+    '<password>', process.env.DATABASE_PASSWORD
+)
 // console.log(DB)
 // 連接資料庫 
 mongoose.connect(DB)
-    .then(()=>{
+    .then(() => {
         console.log('資料庫連線成功')
     })
-    .catch((error)=>{
+    .catch((error) => {
         console.log(error);
     });
 
 
-const requestListener = async (req,res)=>{
+const requestListener = async (req, res) => {
     let body = "";
-    req.on('data',chunk =>{
+    req.on('data', chunk => {
         body += chunk;
     })
     const headers = {
@@ -32,46 +32,46 @@ const requestListener = async (req,res)=>{
     }
 
     // 取得所有貼文
-    if(req.url=="/posts" && req.method=="GET"){
+    if (req.url == "/posts" && req.method == "GET") {
         const posts = await Post.find();
-        res.writeHead(200,headers);
+        res.writeHead(200, headers);
         res.write(JSON.stringify({
-            "status":"success",
+            "status": "success",
             posts
         }))
-        res.end() 
+        res.end()
     }
     // 新增一則貼文
-    else if(req.url=="/posts" && req.method=="POST"){
-        req.on('end',async()=>{
-            try{
+    else if (req.url == "/posts" && req.method == "POST") {
+        req.on('end', async () => {
+            try {
                 const data = JSON.parse(body);
                 const newPost = await Post.create(
                     {
                         name: data.name,
-                        image:data.image,
-                        content:data.content,
-                        likes:data.likes,
+                        image: data.image,
+                        content: data.content,
+                        likes: data.likes,
                         comments: data.comments,
-                        type:data.type,
-                        tag:data.tag
+                        type: data.type,
+                        tag: data.tag
                     }
                 )
-                res.writeHead(200,headers);
+                res.writeHead(200, headers);
                 res.write(JSON.stringify(
                     {
-                        "status":"success",
-                        posts:newPost
+                        "status": "success",
+                        posts: newPost
                     }
                 ))
                 res.end();
-            }catch(error){
-                res.writeHead(400,headers);
+            } catch (error) {
+                res.writeHead(400, headers);
                 res.write(JSON.stringify(
                     {
-                        "status":"false",
-                        "message":"欄位沒有正確，或沒有此 ID",
-                        "error":error
+                        "status": "false",
+                        "message": "欄位沒有正確，或沒有此 ID",
+                        "error": error
                     }
                 ))
                 console.log(error);
@@ -81,31 +81,31 @@ const requestListener = async (req,res)=>{
         )
     }
     // 更新一則貼文
-    else if(req.url.startsWith("/posts/") && req.method=="PATCH"){
+    else if (req.url.startsWith("/posts/") && req.method == "PATCH") {
         // 取得貼文的 ID
         const id = req.url.split("/").pop();
         // 解析請求主體資料
-        req.on('end',async()=>{
-            try{
+        req.on('end', async () => {
+            try {
                 const data = JSON.parse(body);
                 // 找到該 ID 的貼文並更新
                 const updatedPost = await Post.findByIdAndUpdate(id, data, { new: true });
-                res.writeHead(200,headers);
+                res.writeHead(200, headers);
                 res.write(JSON.stringify(
                     {
-                        "status":"success",
-                        "message":"貼文已成功更新",
+                        "status": "success",
+                        "message": "貼文已成功更新",
                         post: updatedPost
                     }
                 ))
                 res.end();
-            }catch(error){
-                res.writeHead(400,headers);
+            } catch (error) {
+                res.writeHead(400, headers);
                 res.write(JSON.stringify(
                     {
-                        "status":"false",
-                        "message":"欄位沒有正確，或沒有此 ID",
-                        "error":error
+                        "status": "false",
+                        "message": "欄位沒有正確，或沒有此 ID",
+                        "error": error
                     }
                 ))
                 console.log(error);
@@ -114,38 +114,38 @@ const requestListener = async (req,res)=>{
         })
     }
     // 刪除一則貼文
-    else if(req.url.startsWith("/posts/") && req.method=="DELETE"){
+    else if (req.url.startsWith("/posts/") && req.method == "DELETE") {
         // 取得貼文的 ID
         const id = req.url.split("/")[2];
         // 刪除該 ID 的貼文
         const deletedPost = await Post.findByIdAndDelete(id);
-        res.writeHead(200,headers);
+        res.writeHead(200, headers);
         res.write(JSON.stringify(
             {
-                "status":"success",
-                "message":"貼文已成功刪除",
+                "status": "success",
+                "message": "貼文已成功刪除",
                 post: deletedPost
             }
         ))
         res.end();
     }
     // 刪除全部貼文
-    else if(req.url=="/posts" && req.method=="DELETE"){
+    else if (req.url == "/posts" && req.method == "DELETE") {
         const posts = await Post.deleteMany({});
-        res.writeHead(200,headers);
+        res.writeHead(200, headers);
         res.write(JSON.stringify({
-            "status":"success",
-            posts:[]
+            "status": "success",
+            posts: []
         }))
         res.end();
-    }else if(req.method=="OPTIONS"){
-        res.writeHead(200,headers);
+    } else if (req.method == "OPTIONS") {
+        res.writeHead(200, headers);
         res.end();
-    }else{
-        res.writeHead(404,headers);
+    } else {
+        res.writeHead(404, headers);
         res.write(JSON.stringify({
-            "status":"false",
-            "message":"無此網站路由"
+            "status": "false",
+            "message": "無此網站路由"
         }));
         res.end();
     }
