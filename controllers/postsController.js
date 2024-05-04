@@ -58,7 +58,7 @@ const postController = {
             const id = req.params.id;
             const dto = await Post.findById(id);
 
-            if (data.content.trim() !== undefined && dto !== null) {
+            if (data.content !== undefined && dto !== null) {
                 await Post.findByIdAndUpdate(id, {
                     name: data.name.trim(),
                     image: data.image,
