@@ -32,7 +32,7 @@ const postController = {
     async createPost(req, res) {
         try {
             const data = req.body;
-            if (data.content.trim() !== undefined) {
+            if (data.content !== undefined) {
                 const newPost = await Post.create({
                     name: data.name.trim(),
                     image: data.image,
@@ -54,28 +54,36 @@ const postController = {
     //更新一筆貼文
     async updatePost(req, res) {
         try {
-            const data = req.body;
+            const { image, content, likes, comments, type, tag } = req.body;
             const id = req.params.id;
             const dto = await Post.findById(id);
+            console.log(content);
 
-            if (data.content !== undefined && dto !== null) {
-                await Post.findByIdAndUpdate(id, {
-                    name: data.name.trim(),
-                    image: data.image,
-                    content: data.content.trim(),
-                    likes: data.likes,
-                    comments: data.comments,
-                    type: data.type,
-                    tag: data.tag
-                }, { runValidators: true });//致愷助教建議
-                const newPost = await Post.findById(id);
-                successHandle(res, newPost);
-            } else {
-                const message = '欄位沒有正確，或沒有此 ID';
-                errorHandle(res, message);
+            if (dto === null) {
+                const message = '沒有此 ID';
+                return errorHandle(res, message);
             }
+
+            if (content == undefined) {
+                const message = '欄位沒有正確';
+                return errorHandle(res, message);
+            }
+
+            const updatedFields = {
+                name: dto.name,
+                image: image,
+                content: content.trim(),
+                likes: likes,
+                comments: comments,
+                type: type,
+                tag: tag
+            };
+
+            await Post.findByIdAndUpdate(id, updatedFields, { runValidators: true });
+            const updatedPost = await Post.findById(id);
+            return successHandle(res, updatedPost);
         } catch (error) {
-            errorHandle(res, error.message);
+            return errorHandle(res, error.message);
         }
     },
     //刪除一筆貼文
