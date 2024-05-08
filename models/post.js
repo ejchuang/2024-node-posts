@@ -1,10 +1,18 @@
 const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "貼文姓名必填"]
+    // name: {
+    //     type: String,
+    //     required: [true, "貼文姓名必填"]
+    // },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: [true, '貼文姓名必填']
     },
-    image: String,
+    image: {
+        type: String,
+        default: ""
+    },
     content: {
         type: String,
         required: [true, "貼文內容必填"]
@@ -31,7 +39,8 @@ const postSchema = new mongoose.Schema({
         type: [String]
     }
 }, {
-    versionKey: false
+    versionKey: false,
+    timestamps: true
 })
 
 const Post = mongoose.model('Post', postSchema);

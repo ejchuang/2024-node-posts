@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Meta API",
+    "description": "Meta API生成文件"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/posts/{id}": {
+      "get": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "取得一筆貼文",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "更新一筆貼文",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "刪除一筆貼文",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/posts/": {
+      "get": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "取得全部貼文",
+        "parameters": [
+          {
+            "name": "timeSort",
+            "in": "query"
+          },
+          {
+            "name": "q",
+            "in": "query"
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "新增一筆貼文",
+        "parameters": [],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Posts-貼文"
+        ],
+        "description": "刪除全部貼文",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/sign_up": {
+      "post": {
+        "tags": [
+          "Users-會員"
+        ],
+        "description": "會員註冊",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/sign_in": {
+      "post": {
+        "tags": [
+          "Users-會員"
+        ],
+        "description": "會員登入",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/profile/": {
+      "get": {
+        "tags": [
+          "Users-會員"
+        ],
+        "description": "會員資訊",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/updatePassword": {
+      "post": {
+        "tags": [
+          "Users-會員"
+        ],
+        "description": "密碼修改",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {}
+}
