@@ -7,36 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "新增一筆資料",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"減肥日記\",\r\n  \"tags\": [\"卡路里\", \"散步\", \"168\"],\r\n  \"type\": \"friend\",\r\n  \"image\": null,\r\n  \"content\": \"胖虎想減肥\",\r\n  \"likes\": 86,\r\n  \"comments\": 386\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "刪除全部資料",
+			"name": "刪除全部貼文",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -56,13 +27,13 @@
 			"response": []
 		},
 		{
-			"name": "更新一筆資料",
+			"name": "更新一筆貼文",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"content\": \"胖虎愛減肥\"\r\n}",
+					"raw": "{\r\n  \"content\": \"胖虎愛減肥\",\r\n  \"likes\": 86\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,27 +57,7 @@
 			"response": []
 		},
 		{
-			"name": "取得全部資料",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "刪除一筆資料",
+			"name": "刪除一筆貼文",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -142,6 +93,400 @@
 					"path": [
 						"posts",
 						"6635d47e61a89d16a8cb7c3e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得全部貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/posts?timeSort=asc&q=美食",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "q",
+							"value": "美食"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一筆貼文",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/posts",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員註冊",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"889@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"confirmPassword\":\"12345678\",\r\n    \"name\":\"Amy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/users/sign_up",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員登入",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/users/sign_in",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員資料",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "密碼修改",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"confirmPassword\":\"12345678\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/users/updatePassword",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得全部貼文 (本地)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts?timeSort=asc&q=美食",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "q",
+							"value": "美食"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一筆貼文 (本地)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員註冊 (本地)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"confirmPassword\":\"12345678\",\r\n    \"name\":\"Apple\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/sign_up",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員登入 (本地)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/sign_in",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "會員資料 (本地)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "密碼修改 (本地)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"confirmPassword\":\"23456789\",\r\n    \"password\":\"23456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/updatePassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"updatePassword"
 					]
 				}
 			},
