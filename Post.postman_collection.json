@@ -102,7 +102,13 @@
 			"name": "取得全部貼文",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "https://two024-node-posts.onrender.com/posts?timeSort=asc&q=美食",
 					"protocol": "https",
@@ -132,10 +138,16 @@
 			"name": "新增一筆貼文",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"user\":\"663b7dbf93202322c4852b6a\",\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
+					"raw": "{\r\n  \"user\":\"663b8b74f8a78bc240a17019\",\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -224,7 +236,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -251,7 +263,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -331,7 +343,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2NiZTE0MzU2Y2Q4ZDkxM2IwMzIyYiIsImlhdCI6MTcxNTI1NjkzMSwiZXhwIjoxNzE1ODYxNzMxfQ.8DYe-A5KPhHyAgzEmOpesw2lIXwm1P552KMT6kzxEDg",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -432,7 +444,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -461,7 +473,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
