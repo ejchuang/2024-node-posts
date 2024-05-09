@@ -83,7 +83,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts/6635d47e61a89d16a8cb7c3e",
+					"raw": "https://two024-node-posts.onrender.com/posts/663b88591dfc2726f1531593",
 					"protocol": "https",
 					"host": [
 						"two024-node-posts",
@@ -92,7 +92,7 @@
 					],
 					"path": [
 						"posts",
-						"6635d47e61a89d16a8cb7c3e"
+						"663b88591dfc2726f1531593"
 					]
 				}
 			},
@@ -135,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
+					"raw": "{\r\n  \"user\":\"663b7dbf93202322c4852b6a\",\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,13 +331,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2I3ZGVmOTMyMDIzMjJjNDg1MmI2YyIsImlhdCI6MTcxNTE3NTAzNSwiZXhwIjoxNzE1Nzc5ODM1fQ.Ze4dyeGC3APRzZyI3xRUDDuX-Lku29figMTji0H9GqE",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2NiZTE0MzU2Y2Q4ZDkxM2IwMzIyYiIsImlhdCI6MTcxNTI1NjkzMSwiZXhwIjoxNzE1ODYxNzMxfQ.8DYe-A5KPhHyAgzEmOpesw2lIXwm1P552KMT6kzxEDg",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
+					"raw": "{\r\n  \"user\":\"663b7dbf93202322c4852b6a\",\r\n  \"tags\": [\"香蕉\", \"芭樂\", \"鳳梨\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"台灣水果批發\",\r\n  \"likes\": 586,\r\n  \"comments\": 216\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -368,7 +368,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"confirmPassword\":\"12345678\",\r\n    \"name\":\"Apple\"\r\n}",
+					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"77777777\",\r\n    \"confirmPassword\":\"77777777\",\r\n    \"name\":\"7老大\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -400,7 +400,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"77777777\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

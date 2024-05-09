@@ -16,10 +16,8 @@
   "paths": {
     "/posts/{id}": {
       "get": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "取得一筆貼文",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -31,10 +29,8 @@
         "responses": {}
       },
       "patch": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "更新一筆貼文",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -46,10 +42,8 @@
         "responses": {}
       },
       "delete": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "刪除一筆貼文",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -63,79 +57,52 @@
     },
     "/posts/": {
       "get": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "取得全部貼文",
-        "parameters": [
-          {
-            "name": "timeSort",
-            "in": "query"
-          },
-          {
-            "name": "q",
-            "in": "query"
-          }
-        ],
+        "tags": [],
+        "description": "",
+        "parameters": [],
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "新增一筆貼文",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       },
       "delete": {
-        "tags": [
-          "Posts-貼文"
-        ],
-        "description": "刪除全部貼文",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       }
     },
     "/users/sign_up": {
       "post": {
-        "tags": [
-          "Users-會員"
-        ],
-        "description": "會員註冊",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       }
     },
     "/users/sign_in": {
       "post": {
-        "tags": [
-          "Users-會員"
-        ],
-        "description": "會員登入",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       }
     },
     "/users/profile/": {
       "get": {
-        "tags": [
-          "Users-會員"
-        ],
-        "description": "會員資訊",
+        "tags": [],
+        "description": "",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "responses": {}
       }
     },
     "/users/updatePassword": {
       "post": {
-        "tags": [
-          "Users-會員"
-        ],
-        "description": "密碼修改",
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       }
