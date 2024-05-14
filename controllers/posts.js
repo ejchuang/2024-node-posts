@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Post = require("../models/post");
 const User = require("../models/user");
 const successHandle = require("../service/successHandle");
@@ -72,8 +73,13 @@ const posts = {
         * */
         const { image, content, likes, comments, type, tag } = req.body;
         const id = req.params.id;
+
+        if (id === undefined ||!mongoose.isValidObjectId(id)) {
+            const message = 'ID格式錯誤';
+            return next(appError(400, message));
+        }
+
         const dto = await Post.findById(id);
-        console.log(content);
 
         if (dto === null) {
             const message = '沒有此 ID';
@@ -105,10 +111,12 @@ const posts = {
         * #swagger.description = '刪除一筆貼文'
         * */
         const id = req.params.id;
-        if (id === undefined) {
-            const message = '請輸入正確ID';
+
+        if (id === undefined ||!mongoose.isValidObjectId(id)) {
+            const message = 'ID格式錯誤';
             return next(appError(400, message));
         }
+
         const dto = await Post.findByIdAndDelete(id);
         if (dto === null) {
             const message = '查無此 ID';

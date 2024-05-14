@@ -17,8 +17,8 @@ const app = express();
 // 程式出現重大錯誤時
 process.on('uncaughtException', err => {
   // 記錄錯誤下來，等到服務都處理完後，停掉該 process
-	console.error('Uncaughted Exception！')
-	console.error(err);
+	//console.error('Uncaughted Exception！')
+	//console.error(err);
 	process.exit(1);
 });
 dotenv.config({ path: './config.env' });
@@ -59,7 +59,7 @@ const resErrorProd = (err, res) => {
     });
   } else {
     // log 紀錄
-    console.error('出現重大錯誤', err);
+    //console.error('出現重大錯誤', err);
     // 送出罐頭預設訊息
     res.status(500).json({
       status: 'error',
@@ -93,6 +93,6 @@ app.use(function(err, req, res, next) {
 
 // 未捕捉到的 catch 
 process.on('unhandledRejection', (err, promise) => {
-  console.error('未捕捉到的 rejection：', promise, '原因：', err);
+  //console.error('未捕捉到的 rejection：', promise, '原因：', err);
 });
 module.exports = app;
