@@ -91,7 +91,7 @@
         "responses": {}
       }
     },
-    "/users/profile/": {
+    "/users/getProfile/": {
       "get": {
         "tags": [],
         "description": "",
@@ -100,7 +100,15 @@
       }
     },
     "/users/updatePassword": {
-      "post": {
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/updateProfile/": {
+      "patch": {
         "tags": [],
         "description": "",
         "parameters": [],

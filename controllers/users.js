@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const appError = require('../service/appError');
+const successHandle = require("../service/successHandle");
 const validator = require('validator');
 const User = require('../models/user');
 const { isAuth, generateSendJWT } = require('../service/auth');
@@ -54,30 +55,63 @@ const users = {
         generateSendJWT(user, 200, res);
 
     },
-    async profile(req, res, next) {
+    async getProfile(req, res, next) {
         /** 
             * #swagger.tags = ['Users-會員']
-            * #swagger.description = '會員資訊'
+            * #swagger.description = '取得個人資料'
           **/
         res.status(200).json({
             status: 'success',
             user: req.user
         });
     },
-    async updatePassword(req, res) {
+    async updateProfile(req, res, next) {
         /** 
             * #swagger.tags = ['Users-會員']
-            * #swagger.description = '密碼修改'
+            * #swagger.description = '更新個人資料'
+          **/
+        const { name, sex, photo } = req.body;
+        // 內容不可為空
+        if (!name || !sex || !photo) {
+            return next(appError("400", "欄位未填寫正確！", next));
+        }
+
+        const user = await User.findByIdAndUpdate(req.user.id, {
+            name: name,
+            sex:sex,
+            photo:photo
+        });
+
+        const updatedUser = await User.findById(req.user.id);
+        successHandle(res, updatedUser);
+    },
+    async updatePassword(req, res, next) {
+        /** 
+            * #swagger.tags = ['Users-會員']
+            * #swagger.description = '重設密碼'
           **/
         const { password, confirmPassword } = req.body;
+
+        if (!password || !confirmPassword) {
+            return next(appError(400, '密碼不可為空', next));
+        }
+
         if (password !== confirmPassword) {
             return next(appError("400", "密碼不一致！", next));
         }
+
+        // 密碼 8 碼以上
+        if (!validator.isLength(password, { min: 8 })) {
+            return next(appError("400", "密碼字數低於 8 碼", next));
+        }
+
+        //加密
         newPassword = await bcrypt.hash(password, 12);
 
         const user = await User.findByIdAndUpdate(req.user.id, {
             password: newPassword
         });
+
         generateSendJWT(user, 200, res)
     }
 }
