@@ -105,7 +105,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
@@ -141,7 +141,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
@@ -164,6 +164,42 @@
 					],
 					"path": [
 						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新個人資料",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"闆娘\",\r\n    \"sex\":\"male\",\r\n    \"photo\":\"1234578\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://two024-node-posts.onrender.com/users/updateProfile",
+					"protocol": "https",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"updateProfile"
 					]
 				}
 			},
@@ -206,7 +242,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"886@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -236,12 +272,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/profile",
+					"raw": "https://two024-node-posts.onrender.com/users/getProfile",
 					"protocol": "https",
 					"host": [
 						"two024-node-posts",
@@ -250,7 +286,7 @@
 					],
 					"path": [
 						"users",
-						"profile"
+						"getProfile"
 					]
 				}
 			},
@@ -263,7 +299,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
@@ -293,13 +329,56 @@
 			"response": []
 		},
 		{
+			"name": "上傳圖片",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "postman-cloud:///1ef15ded-5481-4a10-8342-b8ef162b55c1"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://two024-node-posts.onrender.com/upload/file",
+					"protocol": "http",
+					"host": [
+						"two024-node-posts",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"upload",
+						"file"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "取得全部貼文 (本地)",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -337,13 +416,51 @@
 			"response": []
 		},
 		{
+			"name": "更新一筆貼文 (本地)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"北高雄美食地圖\",\r\n  \"likes\": 86\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/posts/663b88591dfc2726f1531593",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"663b88591dfc2726f1531593"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "新增一筆貼文 (本地)",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
@@ -380,7 +497,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"77777777\",\r\n    \"confirmPassword\":\"77777777\",\r\n    \"name\":\"7老大\"\r\n}",
+					"raw": "{\r\n    \"email\":\"236@gmail.com\",\r\n    \"password\":\"236236236\",\r\n    \"confirmPassword\":\"236236236\",\r\n    \"name\":\"CUTE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -412,7 +529,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"77777777\"\r\n}",
+					"raw": "{\r\n    \"email\":\"236@gmail.com\",\r\n    \"password\":\"236236236\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -444,12 +561,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:3000/users/profile",
+					"raw": "http://127.0.0.1:3000/users/getProfile",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -460,7 +577,7 @@
 					"port": "3000",
 					"path": [
 						"users",
-						"profile"
+						"getProfile"
 					]
 				}
 			},
@@ -469,17 +586,17 @@
 		{
 			"name": "密碼修改 (本地)",
 			"request": {
-				"method": "POST",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer ",
+						"value": "",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"confirmPassword\":\"23456789\",\r\n    \"password\":\"23456789\"\r\n}",
+					"raw": "{\r\n    \"confirmPassword\":\"236236236\",\r\n    \"password\":\"236236236\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -499,6 +616,83 @@
 					"path": [
 						"users",
 						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新個人資料 (本地)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"闆娘\",\r\n    \"sex\":\"male\",\r\n    \"photo\":\"1234578\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/users/updateProfile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"updateProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上傳圖片 (本地)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "postman-cloud:///1ef15ded-5481-4a10-8342-b8ef162b55c1"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/upload/file",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"upload",
+						"file"
 					]
 				}
 			},

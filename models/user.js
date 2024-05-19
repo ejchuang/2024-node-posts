@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         select: false,
         validate: {
             validator: function (value) {
-                return /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/.test(value);
+                return /(?=.*[A-Za-z])(?=.*\d)/.test(value);
             },
             message: '密碼至少需要8碼以上，並中英混合'
         }

@@ -11,7 +11,7 @@ const swaggerFile = require('./swagger-output.json');
 const index = require('./routes/index');
 const posts = require('./routes/posts');
 const users = require('./routes/users');
-
+const upload = require('./routes/upload');
 const app = express();
 
 // 程式出現重大錯誤時
@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public'))); //靜態資料
 app.use('/', index);
 app.use('/posts', posts);
 app.use('/users', users);
+app.use('/upload', upload)
 app.use('/api-doc',swaggerUI.serve,swaggerUI.setup(swaggerFile));
 
 // 404 錯誤

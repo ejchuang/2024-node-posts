@@ -13,20 +13,28 @@ const users = {
   * */let { email, password, confirmPassword, name } = req.body;
         // 內容不可為空
         if (!email || !password || !confirmPassword || !name) {
-            return next(appError("400", "欄位未填寫正確！", next));
+            return next(appError(400, "欄位未填寫正確！", next));
         }
         // 密碼正確
         if (password !== confirmPassword) {
-            return next(appError("400", "密碼不一致！", next));
+            return next(appError(400, "密碼不一致！", next));
         }
         // 密碼 8 碼以上
         if (!validator.isLength(password, { min: 8 })) {
-            return next(appError("400", "密碼字數低於 8 碼", next));
+            return next(appError(400, "密碼字數低於 8 碼", next));
         }
         // 是否為 Email
         if (!validator.isEmail(email)) {
-            return next(appError("400", "Email 格式不正確", next));
+            return next(appError(400, "Email 格式不正確", next));
         }
+
+        // 驗證Email是否已存在
+        const dto = await User.findOne({ email });
+
+        if (dto) {
+            return next(appError(400, 'Email已被使用', next));
+        }
+
 
         // 加密密碼
         password = await bcrypt.hash(req.body.password, 12);
@@ -47,13 +55,19 @@ const users = {
         if (!email || !password) {
             return next(appError(400, '帳號密碼不可為空', next));
         }
+
+        // 檢查信箱格式
+        const emailRegex = /\S+@\S+\.\S+/;
+        if (!emailRegex.test(email)) {
+            return next(appError(400, 'Email格式不正確', next));
+        }
+
         const user = await User.findOne({ email }).select('+password');
         const auth = await bcrypt.compare(password, user.password);
         if (!auth) {
             return next(appError(400, '您的密碼不正確', next));
         }
         generateSendJWT(user, 200, res);
-
     },
     async getProfile(req, res, next) {
         /** 
@@ -69,17 +83,17 @@ const users = {
         /** 
             * #swagger.tags = ['Users-會員']
             * #swagger.description = '更新個人資料'
-          **/
+        **/
         const { name, sex, photo } = req.body;
         // 內容不可為空
         if (!name || !sex || !photo) {
-            return next(appError("400", "欄位未填寫正確！", next));
+            return next(appError(400, "欄位未填寫正確！", next));
         }
 
         const user = await User.findByIdAndUpdate(req.user.id, {
             name: name,
-            sex:sex,
-            photo:photo
+            sex: sex,
+            photo: photo
         });
 
         const updatedUser = await User.findById(req.user.id);
@@ -97,12 +111,12 @@ const users = {
         }
 
         if (password !== confirmPassword) {
-            return next(appError("400", "密碼不一致！", next));
+            return next(appError(400, "密碼不一致！", next));
         }
 
         // 密碼 8 碼以上
         if (!validator.isLength(password, { min: 8 })) {
-            return next(appError("400", "密碼字數低於 8 碼", next));
+            return next(appError(400, "密碼字數低於 8 碼", next));
         }
 
         //加密
