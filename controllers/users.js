@@ -4,7 +4,7 @@ const successHandle = require("../service/successHandle");
 const validator = require('validator');
 const User = require('../models/user');
 const Post = require("../models/post");
-const { isAuth, generateSendJWT } = require('../service/auth');
+const { generateSendJWT } = require('../service/auth');
 
 const users = {
     async sign_up(req, res, next) {
@@ -131,15 +131,23 @@ const users = {
     },
     async createFollow(req, res, next) {
         /** 
-            * #swagger.tags = ['Users-會員追蹤']
-            * #swagger.description = '追蹤朋友'
-          **/
+        * #swagger.tags = ['Users-會員追蹤']
+        * #swagger.description = '追蹤朋友'
+        **/
         const userID = req.user.id;
         const followID = req.params.id;
 
         if (userID === followID) {
             return next(appError(401, '您無法追蹤自己', next));
         }
+
+        const user = await User.findById(userID);
+
+        // 驗證是否已經追蹤
+        if (user.following.some(follow => follow.user.toString() === followID)) {
+            return next(appError(400, '你已經追蹤該用戶'));
+        }
+
         await User.updateOne(
             {
                 _id: userID,
@@ -163,29 +171,44 @@ const users = {
     },
     async deleteFollow(req, res, next) {
         /** 
-            * #swagger.tags = ['Users-會員追蹤']
-            * #swagger.description = '取消追蹤'
-          **/
+           * #swagger.tags = ['Users-會員追蹤']
+           * #swagger.description = '取消追蹤朋友'
+        */
         const userID = req.user.id;
         const followID = req.params.id;
 
         if (userID === followID) {
             return next(appError(400, '您無法取消追蹤自己', next));
         }
-        await User.updateOne(
-            {
-                _id: userID,
-            },
+
+        const user = await User.findById(userID);
+
+        // 驗證是否有追蹤
+        if (!user.following.some(follow => follow.user.toString() === followID)) {
+            return next(appError(400, '您尚未追蹤該用戶'));
+        }
+
+        // 更新追蹤
+        await User.findByIdAndUpdate(
+            userID,
             {
                 $pull: { following: { user: followID } }
-            }
-        );
-        await User.updateOne(
-            {
-                _id: followID,
             },
             {
+                runValidators: true,
+                new: true,
+            }
+        );
+
+        //更新被追蹤者
+        await User.findByIdAndUpdate(
+            followID,
+            {
                 $pull: { followers: { user: userID } }
+            },
+            {
+                runValidators: true,
+                new: true,
             }
         );
 
@@ -199,7 +222,7 @@ const users = {
         const userID = req.user.id;
         const dtos = await User.findById(userID).populate({
             path: 'following.user',
-            select: 'name', 
+            select: 'name',
         });
 
         successHandle(res, dtos);

@@ -11,8 +11,8 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '取得所有貼文'
-        * 
         */
+
         //時間排序
         const timeSort = req.query.timeSort === 'asc' ? 'createAt' : '-createdAt'
         //關鍵字搜尋
@@ -33,7 +33,7 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '取得單一貼文'
-        * */
+        */
         const postID = req.params.postID;
 
         if (postID === undefined || !mongoose.isValidObjectId(postID)) {
@@ -54,7 +54,6 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '取得個人所有貼文列表'
-        * 
         */
         const data = req.body;
         //驗證資料
@@ -87,7 +86,7 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '新增貼文'
-        * */
+        */
         const data = req.body
 
         //驗證資料
@@ -107,7 +106,7 @@ const posts = {
             image: data.image,
             content: data.content.trim(),
             type: data.type,
-            tag: data.tag
+            tags: data.tags
         });
         successHandle(res, newPost);
     },
@@ -115,8 +114,8 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '更新一則貼文'
-        * */
-        const { image, content, type, tag } = req.body;
+        */
+        const { image, content, type, tags } = req.body;
         const postID = req.params.postID;
 
         if (postID === undefined || !mongoose.isValidObjectId(postID)) {
@@ -141,7 +140,7 @@ const posts = {
             image: image,
             content: content.trim(),
             type: type,
-            tag: tag
+            tags: tags
         };
 
         await Post.findByIdAndUpdate(postID, updatedFields, { runValidators: true });
@@ -152,7 +151,7 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '刪除一則貼文'
-        * */
+        */
         const postID = req.params.postID;
 
         if (postID === undefined || !mongoose.isValidObjectId(postID)) {
@@ -171,7 +170,8 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '刪除所有貼文'
-        * */
+        */
+
         //DELETE 刪除單筆資料時，若未填寫 ID 路由為 "/posts/” 時，會刪除所有貼文，為了避免前端錯誤操作導致刪除所有資料，建議可利用 req.originalUrl 判斷路由是否為 "/posts/” 進行錯誤處理
         if (req.originalUrl !== '/posts') {
             const message = '查無此 ID';
@@ -184,7 +184,8 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '新增一則貼文的留言'
-        * */
+        */
+
         const data = req.body;
         const postID = req.params.postID;
 
@@ -220,7 +221,7 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '新增一則貼文的讚'
-        * */
+        */
 
         const postID = req.params.postID;
 
@@ -264,7 +265,8 @@ const posts = {
         /** 
         * #swagger.tags = ['Posts-動態貼文']
         * #swagger.description = '取消一則貼文的讚'
-        * */
+        */
+       
         const data = req.body;
         const postID = req.params.postID;
 

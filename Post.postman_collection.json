@@ -7,696 +7,623 @@
 	},
 	"item": [
 		{
-			"name": "刪除全部貼文",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "更新一筆貼文",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"content\": \"胖虎愛減肥\",\r\n  \"likes\": 86\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts/6635d47e61a89d16a8cb7c3e",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts",
-						"6635d47e61a89d16a8cb7c3e"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "刪除一筆貼文",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts/662be1f8d061d1a1ea1fdb63",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts",
-						"662be1f8d061d1a1ea1fdb63"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "取得一筆貼文",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts/663b88591dfc2726f1531593",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts",
-						"663b88591dfc2726f1531593"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "取得全部貼文",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts?timeSort=asc&q=美食",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts"
-					],
-					"query": [
-						{
-							"key": "timeSort",
-							"value": "asc"
+			"name": "會員功能",
+			"item": [
+				{
+					"name": "會員功能-註冊會員",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"0525@gmail.com\",\r\n    \"password\":\"05250525\",\r\n    \"confirmPassword\":\"05250525\",\r\n    \"name\":\"Amy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "q",
-							"value": "美食"
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/sign_up",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "新增一筆貼文",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"user\":\"663b8b74f8a78bc240a17019\",\r\n  \"name\": \"美食日記\",\r\n  \"tags\": [\"熱壓吐司\", \"草莓派\", \"蛋塔\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"高雄美食地圖\",\r\n  \"likes\": 86,\r\n  \"comments\": 16\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/posts",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"posts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "更新個人資料",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"闆娘\",\r\n    \"sex\":\"male\",\r\n    \"photo\":\"1234578\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/updateProfile",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"users",
-						"updateProfile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "會員註冊",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"889@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"confirmPassword\":\"12345678\",\r\n    \"name\":\"Amy\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/sign_up",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"users",
-						"sign_up"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "會員登入",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"777@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/sign_in",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"users",
-						"sign_in"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "會員資料",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/getProfile",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"users",
-						"getProfile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "密碼修改",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"confirmPassword\":\"12345678\",\r\n    \"password\":\"12345678\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://two024-node-posts.onrender.com/users/updatePassword",
-					"protocol": "https",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"users",
-						"updatePassword"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "上傳圖片",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "",
-							"type": "file",
-							"src": "postman-cloud:///1ef15ded-5481-4a10-8342-b8ef162b55c1"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://two024-node-posts.onrender.com/upload/file",
-					"protocol": "http",
-					"host": [
-						"two024-node-posts",
-						"onrender",
-						"com"
-					],
-					"path": [
-						"upload",
-						"file"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "取得全部貼文 (本地)",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/posts?timeSort=asc&q=美食",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"posts"
-					],
-					"query": [
-						{
-							"key": "timeSort",
-							"value": "asc"
+				{
+					"name": "會員功能-登入會員",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"0525@gmail.com\",\r\n    \"password\":\"05250525\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "q",
-							"value": "美食"
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "更新一筆貼文 (本地)",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"content\": \"北高雄美食地圖\",\r\n  \"likes\": 86\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/posts/663b88591dfc2726f1531593",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"posts",
-						"663b88591dfc2726f1531593"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "新增一筆貼文 (本地)",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"user\":\"663b7dbf93202322c4852b6a\",\r\n  \"tags\": [\"香蕉\", \"芭樂\", \"鳳梨\"],\r\n  \"type\": \"food\",\r\n  \"image\": null,\r\n  \"content\": \"台灣水果批發\",\r\n  \"likes\": 586,\r\n  \"comments\": 216\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "會員功能-重設密碼",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"confirmPassword\":\"05250525\",\r\n    \"password\":\"05250525\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/updatePassword",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/posts",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"posts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "會員註冊 (本地)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"236@gmail.com\",\r\n    \"password\":\"236236236\",\r\n    \"confirmPassword\":\"236236236\",\r\n    \"name\":\"CUTE\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "會員功能-更新個人資料",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"闆娘\",\r\n    \"sex\":\"female\",\r\n    \"photo\":\"1234578\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/users/sign_up",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"sign_up"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "會員登入 (本地)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"236@gmail.com\",\r\n    \"password\":\"236236236\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "會員功能-取得個人資料",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/users/sign_in",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"sign_in"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "會員資料 (本地)",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:3000/users/getProfile",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"getProfile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "密碼修改 (本地)",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"confirmPassword\":\"236236236\",\r\n    \"password\":\"236236236\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "會員按讚追蹤動態",
+			"item": [
+				{
+					"name": "會員追蹤-追蹤朋友",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/663b7dbf93202322c4852b6a/follow",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"663b7dbf93202322c4852b6a",
+								"follow"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/users/updatePassword",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"updatePassword"
-					]
+				{
+					"name": "會員追蹤-取消追蹤朋友",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/663b7dbf93202322c4852b6a/unfollow",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"663b7dbf93202322c4852b6a",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "會員其他-取得個人按讚列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/getLikeList",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "會員追蹤-取得個人追蹤名單",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/users/following",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "更新個人資料 (本地)",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"闆娘\",\r\n    \"sex\":\"male\",\r\n    \"photo\":\"1234578\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "動態貼文",
+			"item": [
+				{
+					"name": "動態貼文-取得所有貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts?timeSort=asc&q=美食",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "asc"
+								},
+								{
+									"key": "q",
+									"value": "美食"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/users/updateProfile",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"users",
-						"updateProfile"
-					]
+				{
+					"name": "動態貼文-取得單一貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/663cc3f4876bd0fa0a269c7f",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"663cc3f4876bd0fa0a269c7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-新增貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"高雄捷運\",\r\n  \"tags\": [\"美麗島站\", \"生態園區站\"],\r\n  \"type\": \"travel\",\r\n  \"image\": null,\r\n  \"content\": \"高雄捷運路線\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-更新貼文",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"高雄捷運\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/6650ec52b65929538d74b57d",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"6650ec52b65929538d74b57d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-刪除所有貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-刪除一則貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/662be1f8d061d1a1ea1fdb63",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"662be1f8d061d1a1ea1fdb63"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-新增一則貼文的讚",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/6650ec52b65929538d74b57d/like",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"6650ec52b65929538d74b57d",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-取消一則貼文的讚",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/6650ec52b65929538d74b57d/unlike",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"6650ec52b65929538d74b57d",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-新增一則貼文的留言",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"comment\":\"good\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/6650ec52b65929538d74b57d/comment",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"6650ec52b65929538d74b57d",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "動態貼文-取得個人所有貼文列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"url": {
+							"raw": "https://two024-node-posts.onrender.com/posts/user/6650e9ebb65929538d74b528",
+							"protocol": "https",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"user",
+								"6650e9ebb65929538d74b528"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "上傳圖片 (本地)",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "",
-							"type": "file",
-							"src": "postman-cloud:///1ef15ded-5481-4a10-8342-b8ef162b55c1"
+			"name": "其他",
+			"item": [
+				{
+					"name": "其他-上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer "
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/user/Downloads/20240519001.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://two024-node-posts.onrender.com/upload",
+							"protocol": "http",
+							"host": [
+								"two024-node-posts",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"upload"
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3000/upload/file",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3000",
-					"path": [
-						"upload",
-						"file"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
