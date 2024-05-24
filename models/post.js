@@ -1,34 +1,27 @@
 const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema({
-    // name: {
-    //     type: String,
-    //     required: [true, "貼文姓名必填"]
-    // },
-    user: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'user',
-        required: [true, '貼文姓名必填']
+    content: {
+        type: String,
+        required: [true, "貼文內容必填"]
     },
     image: {
         type: String,
         default: ""
     },
-    content: {
-        type: String,
-        required: [true, "貼文內容必填"]
-    },
-    likes: {
-        type: Number,
-        default: 0
-    },
-    comments: {
-        type: Number,
-        default: 0
-    },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now,//確保每筆資料時間不同
         select: false //保護起來不讓前台看到
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: [true, '貼文ID必填']
+    },
+    likes: {
+        type: [mongoose.Schema.ObjectId],
+        ref: 'user',
+        default: [], // 一對多(欄位)
     },
     type: {
         type: String,
@@ -40,8 +33,17 @@ const postSchema = new mongoose.Schema({
     }
 }, {
     versionKey: false,
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true},
     timestamps: true
-})
+});
+
+//虛擬欄位
+postSchema.virtual('comments', {
+    ref: 'Comment',
+    foreignField: 'post',
+    localField: '_id',
+  });
 
 const Post = mongoose.model('Post', postSchema);
 

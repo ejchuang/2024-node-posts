@@ -5,6 +5,7 @@ const handleErrorAsync = require('../service/handleErrorAsync');
 const upload = require('../service/image');
 const { isAuth } = require('../service/auth');
 
-router.post('/file', isAuth, upload, handleErrorAsync(uploadController.file));
+router.post('/', isAuth, upload, handleErrorAsync(uploadController.file));
+router.post('/imgur', isAuth, upload, handleErrorAsync(uploadController.imgur));
 
 module.exports = router;

@@ -85,9 +85,29 @@ app.use(function(err, req, res, next) {
   } 
   // production mongoose
   if (err.name === 'ValidationError'){
-    err.message = "資料欄位未填寫正確，請重新輸入！"
+    err.message = "資料未填寫正確，請重新輸入！"
     err.isOperational = true;
     return resErrorProd(err, res)
+  }else if (err.name === 'SyntaxError') {
+    err.message = '資料格式錯誤';
+    err.statusCode = 400;
+    err.isOperational = true;
+    return resErrorProd(err, res);
+  } else if (err.name === 'CastError') {
+    err.message = '找不到此貼文';
+    err.statusCode = 400;
+    err.isOperational = true;
+    return resErrorProd(err, res);
+  } else if (err.name === 'JsonWebTokenError') {
+    err.message = 'JWT 格式錯誤或過期';
+    err.statusCode = 401;
+    err.isOperational = true;
+    return resErrorProd(err, res);
+  } else if (err.name === 'MulterError') {
+    err.message = '圖片不能大於 2MB';
+    err.statusCode = 400;
+    err.isOperational = true;
+    return resErrorProd(err, res);
   }
   resErrorProd(err, res)
 });
