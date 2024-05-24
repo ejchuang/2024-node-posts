@@ -141,13 +141,6 @@ const users = {
             return next(appError(401, '您無法追蹤自己', next));
         }
 
-        const user = await User.findById(userID);
-
-        // 驗證是否已經追蹤
-        if (user.following.some(follow => follow.user.toString() === followID)) {
-            return next(appError(400, '你已經追蹤該用戶'));
-        }
-
         await User.updateOne(
             {
                 _id: userID,
@@ -179,13 +172,6 @@ const users = {
 
         if (userID === followID) {
             return next(appError(400, '您無法取消追蹤自己', next));
-        }
-
-        const user = await User.findById(userID);
-
-        // 驗證是否有追蹤
-        if (!user.following.some(follow => follow.user.toString() === followID)) {
-            return next(appError(400, '您尚未追蹤該用戶'));
         }
 
         // 更新追蹤
